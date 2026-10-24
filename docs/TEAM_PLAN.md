@@ -2,6 +2,8 @@
 
 Bu dağılım başlangıç önerisidir; kişilerin mevcut uzmanlığına ilişkin bir varsayım içermez. İş yükü veya ilgi alanları değişirse sorumluluklar birlikte güncellenir. README, bilimsel protokol ve makale İngilizce; ekip içi bu çalışma planı Türkçedir.
 
+Görevler artık [GitHub issue dizininde](ISSUE_INDEX.md) ve [ana takip #1](https://github.com/mathissdupont/NLP-Project/issues/1) altında izlenir. Güncel sorumlu ve blocker ilişkileri GitHub'dadır; [issue/PR akışı](GITHUB_WORKFLOW.md) branch, inceleme ve kapanış kurallarını açıklar.
+
 ## Ana sorumluluklar
 
 | Üye | Ana iş paketi | Somut teslimler | Çapraz inceleyen |

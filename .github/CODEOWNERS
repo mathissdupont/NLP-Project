@@ -1,0 +1,10 @@
+# Default reviewer; GitHub excludes a PR author from reviewing their own PR.
+* @mathissdupont
+/data/ @fatmanurrbulut
+/src/turkish_morphology/data/ @fatmanurrbulut
+/src/turkish_morphology/representations/ @mathissdupont
+/src/turkish_morphology/probing/ @halilabaci
+/src/turkish_morphology/evaluation/ @halilabaci @fatmanurrbulut
+/tests/ @halilabaci
+/paper/ @halilabaci @fatmanurrbulut @mathissdupont
+/docs/ @halilabaci @fatmanurrbulut @mathissdupont

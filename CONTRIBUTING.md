@@ -2,6 +2,8 @@
 
 Start with [the team plan](docs/TEAM_PLAN.md), [the research protocol](docs/RESEARCH_PROTOCOL.md), and [the data contract](docs/DATA_SPEC.md).
 
+Work is tracked in [the issue index](docs/ISSUE_INDEX.md) and [GitHub tracker #1](https://github.com/mathissdupont/NLP-Project/issues/1). Follow the [issue/PR workflow](docs/GITHUB_WORKFLOW.md) for native blockers, owner labels, peer review, and CI.
+
 ## Local setup
 
 Run from the repository root. The foundation requires Python 3.11 or newer.
@@ -26,7 +28,7 @@ The foundation and ML environments are distinct milestones. Record and lock the 
 
 ## Collaboration
 
-Use short branches such as `data/nonce-screening`, `models/token-alignment`, or `eval/linear-probe`. A work package is complete when its code, relevant scientific checks, documentation, and reviewer feedback are resolved. Each member reviews the adjacent work package listed in the team plan.
+Use issue-numbered branches such as `data/5-nonce-pilot`, `models/8-token-alignment`, or `eval/12-linear-probe`. Link completed work with `Closes #NUMBER` in the PR and use Draft PRs while prerequisite work remains. A work package is complete when its code, relevant scientific checks, documentation, and reviewer feedback are resolved. Each member reviews the adjacent work package listed in the team plan.
 
 The public repository is [mathissdupont/NLP-Project](https://github.com/mathissdupont/NLP-Project), with `main` as the default branch and `origin` as the shared remote. Clone it to work locally:
 
