@@ -32,7 +32,7 @@ python -m venv .venv
 
 On macOS/Linux use `.venv/bin/python` for the environment's interpreter. The lightweight foundation downloads no pretrained models. [CONTRIBUTING.md](CONTRIBUTING.md) explains the optional ML environment and workflow.
 
-The included example records are illustrative, pending review, and unassigned. They pass staging validation and intentionally fail release validation. `configs/pilot.toml` starts with BERTurk enabled; checkpoint revisions are deliberately `UNRESOLVED` until verified.
+The included example records are illustrative, pending review, and unassigned. They pass staging validation and intentionally fail release validation. `configs/pilot.toml` starts with BERTurk enabled; checkpoint revisions are pinned to verified Hub commits. See [Issue #7 validation](docs/ISSUE_7_VALIDATION.md) for CPU/MPS evidence and environment limitations.
 
 ## Motivation
 

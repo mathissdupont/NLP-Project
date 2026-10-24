@@ -36,20 +36,21 @@ bootstrap_samples = 2000
 confidence_level = 0.95
 report_all_layers = true
 
+# Use each checkpoint and revision for both the model and its tokenizer.
 [[models]]
 name = "berturk"
 checkpoint = "dbmdz/bert-base-turkish-cased"
-revision = "UNRESOLVED"
+revision = "b6e1de16c983e0f2c70664591ea3f22810072608"
 enabled = true
 
 [[models]]
 name = "mbert"
 checkpoint = "google-bert/bert-base-multilingual-cased"
-revision = "UNRESOLVED"
+revision = "3f076fdb1ab68d5b2880cb87a0886f315b8146f8"
 enabled = false
 
 [[models]]
 name = "xlmr"
 checkpoint = "FacebookAI/xlm-roberta-base"
-revision = "UNRESOLVED"
+revision = "e73636d4f797dec63c3081bb6ed5c7b0bb3f2089"
 enabled = false
