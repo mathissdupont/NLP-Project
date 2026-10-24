@@ -16,6 +16,8 @@ The project begins as an undergraduate NLP course project, with the goal of deve
 
 **Start working:** [Setup and contribution guide](CONTRIBUTING.md) · [Team assignments (Türkçe)](docs/TEAM_PLAN.md) · [Research protocol](docs/RESEARCH_PROTOCOL.md) · [Data contract](docs/DATA_SPEC.md) · [Literature matrix](docs/LITERATURE_REVIEW.md)
 
+**Track work:** [Research tracker #1](https://github.com/mathissdupont/NLP-Project/issues/1) · [Issue/dependency index](docs/ISSUE_INDEX.md) · [Issue and PR workflow (Türkçe)](docs/GITHUB_WORKFLOW.md) · [Milestones](https://github.com/mathissdupont/NLP-Project/milestones)
+
 ## Quick start
 
 From the repository root, with Python 3.11 or newer:

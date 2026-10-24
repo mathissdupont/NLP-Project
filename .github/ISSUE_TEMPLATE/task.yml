@@ -1,0 +1,41 @@
+name: Araştırma / geliştirme işi
+description: Sahibi, inceleyeni ve bağımlılıkları belli bir teslim tanımla.
+title: "[Task] "
+labels: [enhancement]
+body:
+  - type: input
+    id: owner
+    attributes:
+      label: Sorumlu ve çapraz inceleyen
+      description: Kullanıcı adlarını yaz; sağdaki assignee ve owner etiketini de seç.
+      placeholder: "Sorumlu: @...; inceleyen: @..."
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Amaç ve somut teslim
+      description: İş bittiğinde hangi davranış, veri veya araştırma çıktısı mevcut olacak?
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Bağımlılıklar ve başlanabilecek işler
+      description: Hard blocker issue numaralarını yaz ve Relationships > Blocked by alanına ekle. Fixture ile başlanabilecek hazırlıkları ayır.
+      placeholder: "Kapanışı engelleyen: #...; şimdiden başlanabilir: ..."
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Kabul ölçütleri ve doğrulama
+      description: Kontrol edilebilir checklist ve beklenen kanıt dosyaları/komutları.
+      placeholder: "- [ ] ..."
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: İlgili dosyalar ve devir teslim
+      description: Girdi/çıktı sözleşmesi, dosya yolları ve bu işin açacağı sonraki işler.
