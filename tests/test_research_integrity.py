@@ -7,6 +7,7 @@ not claims that research examples have been reviewed.
 from copy import deepcopy
 import json
 from pathlib import Path
+import re
 from tempfile import TemporaryDirectory
 import unittest
 
@@ -134,10 +135,19 @@ class DatasetIntegrityTests(unittest.TestCase):
 
 
 class ConfigurationAndRunTests(unittest.TestCase):
-    def test_proposed_config_is_valid_but_not_revision_pinned(self):
+    def test_pilot_config_has_pinned_revisions_for_all_models(self):
         config = load_config(REPO / "configs/pilot.toml")
-        with self.assertRaisesRegex(ValueError, "verified"):
-            require_pinned_models(config)
+        for model in config["models"]:
+            model["enabled"] = True
+        require_pinned_models(config)
+
+    def test_unresolved_revision_is_rejected_for_each_model(self):
+        for index in range(3):
+            with self.subTest(model=index):
+                config = load_config(REPO / "configs/pilot.toml")
+                config["models"][index].update(enabled=True, revision="UNRESOLVED")
+                with self.assertRaisesRegex(ValueError, "verified"):
+                    require_pinned_models(config)
 
     def test_model_selection_on_test_data_is_rejected(self):
         with TemporaryDirectory() as directory:
@@ -153,7 +163,7 @@ class ConfigurationAndRunTests(unittest.TestCase):
             config_path, dataset_path, source_path = root / "config.toml", root / "dataset.jsonl", root / "sources.json"
             # Syntactically pinned fake revisions are for offline tests only.
             text = (REPO / "configs/pilot.toml").read_text(encoding="utf-8")
-            config_path.write_text(text.replace("UNRESOLVED", "a" * 40), encoding="utf-8")
+            config_path.write_text(re.sub(r'^revision = ".*"$', 'revision = "' + "a" * 40 + '"', text, flags=re.MULTILINE), encoding="utf-8")
             dataset_path.write_text("\n".join(json.dumps(record, ensure_ascii=False) for record in release_fixture()) + "\n", encoding="utf-8")
             source_path.write_text(json.dumps(SOURCE), encoding="utf-8")
             run_dir = prepare_run(config_path, dataset_path, source_path, root / "runs")
@@ -169,9 +179,13 @@ class ConfigurationAndRunTests(unittest.TestCase):
 
     def test_unpinned_preparation_fails_before_creating_a_run(self):
         with TemporaryDirectory() as directory:
-            output = Path(directory) / "runs"
+            root = Path(directory)
+            output = root / "runs"
+            config_path = root / "config.toml"
+            text = (REPO / "configs/pilot.toml").read_text(encoding="utf-8")
+            config_path.write_text(re.sub(r'^revision = ".*"$', 'revision = "UNRESOLVED"', text, flags=re.MULTILINE), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "verified"):
-                prepare_run(REPO / "configs/pilot.toml", Path("missing.jsonl"), Path("missing-sources.json"), output)
+                prepare_run(config_path, Path("missing.jsonl"), Path("missing-sources.json"), output)
             self.assertFalse(output.exists())
 
 
