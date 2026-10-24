@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "turkish-morphology-probing"
+version = "0.1.0"
+description = "Research infrastructure for probing Turkish morphological generalization."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    {name = "Halil Abacı"},
+    {name = "Fatmanur Bulut"},
+    {name = "Samet Ünsal"},
+]
+dependencies = ["jsonschema>=4.23,<5"]
+
+# This optional stack is a starting declaration, not a validated ML lockfile.
+[project.optional-dependencies]
+ml = [
+    "torch",
+    "transformers",
+    "scikit-learn",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "sentencepiece",
+]
+
+[project.scripts]
+turkish-morphology = "turkish_morphology.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+turkish_morphology = ["resources/*.json"]

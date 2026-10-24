@@ -1,0 +1,55 @@
+# Proposed pilot settings. This is not a completed experiment.
+[experiment]
+name = "nominal-pilot-v0"
+stage = "pilot"
+seeds = [13, 21, 42, 87, 101]
+primary_metric = "macro_f1"
+targets = ["Number", "Case", "Possession", "Person[psor]", "Number[psor]"]
+
+[data]
+schema_version = "0.1.0"
+dataset = "data/processed/nominal-v0.jsonl"
+split_unit = "pair_id"
+condition = "root_generalization"
+# Fractions are design targets, not assertions about an existing dataset.
+train_fraction = 0.70
+dev_fraction = 0.15
+test_fraction = 0.15
+
+[representation]
+input_mode = "isolated_word"
+pooling = "mean"
+layers = "all_including_embeddings"
+batch_size = 16
+max_length = 64
+reject_truncated_words = true
+
+[probe]
+kind = "logistic_regression"
+regularization_c = [0.01, 0.1, 1.0, 10.0, 100.0]
+max_iter = 2000
+selection_split = "dev"
+
+[evaluation]
+bootstrap_unit = "pair_id"
+bootstrap_samples = 2000
+confidence_level = 0.95
+report_all_layers = true
+
+[[models]]
+name = "berturk"
+checkpoint = "dbmdz/bert-base-turkish-cased"
+revision = "UNRESOLVED"
+enabled = true
+
+[[models]]
+name = "mbert"
+checkpoint = "google-bert/bert-base-multilingual-cased"
+revision = "UNRESOLVED"
+enabled = false
+
+[[models]]
+name = "xlmr"
+checkpoint = "FacebookAI/xlm-roberta-base"
+revision = "UNRESOLVED"
+enabled = false

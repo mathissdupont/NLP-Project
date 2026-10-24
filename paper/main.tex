@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage[hidelinks]{hyperref}
+
+\title{Do Language Models Learn Turkish Morphology\\Compositionally or Lexically?}
+\author{NLP Course Project Team\\
+Halil Abac\i{}, Fatmanur Bulut, Samet \"{U}nsal}
+\date{Working manuscript --- empirical study pending}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This manuscript is a structural draft. The planned study compares morphological
+feature accessibility across frozen BERTurk, mBERT, and XLM-R representations
+using real and screened nonce roots. Dataset construction, experiments, and
+empirical conclusions remain to be completed.
+\end{abstract}
+
+\section{Introduction}
+% Shared: motivation, RQ1--RQ5, scope, and evidence-backed contributions.
+
+\section{Related Work}
+Morphological compositional generalization has been studied for Turkish and
+Finnish by \citet{ismayilzada2025morphology}. Probing methodology must account
+for classifier capacity and the limits of decoding-based interpretation
+\citep{hewitt2019control,pimentel2020probing}.
+% Shared: expand and critically compare related work before claiming novelty.
+
+\section{Dataset and Morphological Validation}
+% Halil: sources, licenses, nonce screening, regularity restrictions, labels,
+% independent review, exclusions, sample counts, and frozen split manifests.
+
+\section{Experimental Protocol}
+\subsection{Models and Representations}
+% Fatmanur: checkpoint/tokenizer commits, pooling, alignment, fragmentation.
+\subsection{Probes and Generalization Conditions}
+% Samet: frozen encoders, real-only training, root and composition holdouts.
+\subsection{Baselines and Evaluation}
+% Samet: controls, hyperparameter selection, labels, support, uncertainty.
+
+\section{Results}
+% Add only completed, verified experiment outputs with run identifiers.
+
+\section{Discussion and Limitations}
+% Shared: decodability versus causal use, pretraining exposure uncertainty,
+% surface-form confounds, ambiguity, sample size, and model differences.
+
+\section{Conclusion}
+% Shared: write after the evidence is available.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\appendix
+\section{Annotation Guidelines and Reproducibility Details}
+% Schema versions, examples, review decisions, configurations, environment,
+% compute budget, exclusions, additional layer results, and failed runs.
+\end{document}

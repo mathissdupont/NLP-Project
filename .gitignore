@@ -1,0 +1,55 @@
+# Python and local environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# Local credentials and machine-specific configuration
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Downloaded models, representation caches, and generated runs
+.cache/
+cache/
+models/
+data/raw/*
+!data/raw/README.md
+data/processed/*
+!data/processed/README.md
+data/splits/*
+!data/splits/README.md
+results/runs/*
+!results/runs/README.md
+results/figures/*
+!results/figures/README.md
+*.pt
+*.pth
+*.safetensors
+*.npy
+*.npz
+
+# Notebook and LaTeX build artifacts
+.ipynb_checkpoints/
+paper/*.aux
+paper/*.bbl
+paper/*.bcf
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/*.run.xml
+paper/*.synctex.gz
+paper/main.pdf

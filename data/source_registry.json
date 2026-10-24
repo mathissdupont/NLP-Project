@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1.0",
+  "sources": [
+    {
+      "source_id": "illustrative-readme",
+      "title": "Illustrative forms from the project README",
+      "location": "README.md",
+      "version": "initial research plan",
+      "license": "Project license not yet selected",
+      "redistribution": "undecided",
+      "approved_for_research": false,
+      "role": "Schema demonstration only; not a lexicon or nonce screening resource"
+    }
+  ]
+}
