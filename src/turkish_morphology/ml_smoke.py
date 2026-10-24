@@ -7,11 +7,15 @@ import json
 import os
 from pathlib import Path
 import platform
-import resource
 import subprocess
 import sys
 from time import perf_counter
 from uuid import uuid4
+
+try:
+    import resource
+except ImportError:
+    resource = None
 
 from .config import load_config, require_pinned_models
 
@@ -31,8 +35,15 @@ def hardware():
 
 
 def memory(torch, device):
-    result = {"process_peak_rss": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
-              "process_peak_rss_unit": "bytes" if sys.platform == "darwin" else "KiB"}
+    result = {"process_peak_rss": None, "process_peak_rss_unit": None}
+    if resource is None:
+        result["process_peak_rss_unavailable"] = "The resource module is unavailable on this platform."
+    else:
+        try:
+            result["process_peak_rss"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+            result["process_peak_rss_unit"] = "bytes" if sys.platform == "darwin" else "KiB"
+        except (OSError, ValueError) as exc:
+            result["process_peak_rss_unavailable"] = str(exc)
     if device == "mps":
         for name in ("current_allocated_memory", "driver_allocated_memory", "recommended_max_memory"):
             try:
